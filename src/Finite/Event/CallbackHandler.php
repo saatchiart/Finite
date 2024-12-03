@@ -65,7 +65,7 @@ class CallbackHandler
      *
      * @return CallbackHandler
      */
-    public function addBefore($smOrCallback, $callback = null, array $spec = array())
+    public function addBefore($smOrCallback, ?callable $callback = null, array $spec = array())
     {
         $this->add($smOrCallback, FiniteEvents::PRE_TRANSITION, $callback, $spec);
 
@@ -79,7 +79,7 @@ class CallbackHandler
      *
      * @return CallbackHandler
      */
-    public function addAfter($smOrCallback, $callback = null, array $spec = array())
+    public function addAfter($smOrCallback, ?callable $callback = null, array $spec = array())
     {
         $this->add($smOrCallback, FiniteEvents::POST_TRANSITION, $callback, $spec);
 
@@ -94,7 +94,7 @@ class CallbackHandler
      *
      * @return CallbackHandler
      */
-    protected function add($smOrCallback, $event, $callable = null, array $specs = array())
+    protected function add($smOrCallback, $event, ?callable $callable = null, array $specs = array())
     {
         if ($smOrCallback instanceof Callback) {
             $this->dispatcher->addListener($event, $smOrCallback);

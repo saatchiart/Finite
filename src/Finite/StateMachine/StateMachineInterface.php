@@ -51,7 +51,7 @@ interface StateMachineInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function addTransition($transition, $initialState = null, $finalState = null);
+    public function addTransition($transition, ?string $initialState = null, ?string $finalState = null);
 
     /**
      * Returns a transition by its name.
@@ -136,5 +136,5 @@ interface StateMachineInterface
      *
      * @return bool
      */
-    public function findStateWithProperty($property, $value = null);
+    public function findStateWithProperty($property, mixed $value = null);
 }
