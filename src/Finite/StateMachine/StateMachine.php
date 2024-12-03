@@ -70,9 +70,9 @@ class StateMachine implements StateMachineInterface
      * @param StateAccessorInterface   $stateAccessor
      */
     public function __construct(
-        $object = null,
-        StateMachineDispatcher $dispatcher = null,
-        StateAccessorInterface $stateAccessor = null
+        ?object $object = null,
+        ?StateMachineDispatcher $dispatcher = null,
+        ?StateAccessorInterface $stateAccessor = null
     ) {
         $this->object = $object;
         $this->dispatcher = $dispatcher ?: new StateMachineDispatcher();
@@ -175,7 +175,7 @@ class StateMachine implements StateMachineInterface
     /**
      * {@inheritdoc}
      */
-    public function addTransition($transition, $initialState = null, $finalState = null)
+    public function addTransition($transition, ?string $initialState = null, ?string $finalState = null)
     {
         if ((null === $initialState || null === $finalState) && !$transition instanceof TransitionInterface) {
             throw new \InvalidArgumentException(
@@ -362,7 +362,7 @@ class StateMachine implements StateMachineInterface
     /**
      * {@inheritDoc}
      */
-    public function findStateWithProperty($property, $value = null)
+    public function findStateWithProperty($property, mixed $value = null)
     {
         return array_keys(
             array_map(

@@ -22,7 +22,7 @@ interface PropertiesAwareInterface
      *
      * @return mixed
      */
-    public function get($property, $default = null);
+    public function get($property, mixed $default = null);
 
     /**
      * Returns optional state properties.

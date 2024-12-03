@@ -102,7 +102,7 @@ class TransitionEvent extends StateMachineEvent
      *
      * @return mixed
      */
-    public function get($property, $default = null)
+    public function get($property, mixed $default = null)
     {
         return $this->has($property) ? $this->properties[$property] : $default;
     }

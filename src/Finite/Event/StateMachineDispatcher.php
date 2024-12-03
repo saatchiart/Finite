@@ -16,7 +16,7 @@ class StateMachineDispatcher
      */
     private $eventDispatcher;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher = null)
+    public function __construct(?EventDispatcherInterface $eventDispatcher = null)
     {
         $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher;
     }

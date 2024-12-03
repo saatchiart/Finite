@@ -19,14 +19,14 @@ class FiniteContextNormalizer implements NormalizerInterface, DenormalizerInterf
 
     public function __construct(
         FactoryInterface    $finite,
-        NormalizerInterface $decorated = null
+        ?NormalizerInterface $decorated = null
     )
     {
         $this->finite    = $finite;
         $this->decorated = $decorated;
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization($data, ?string $format = null): bool
     {
         if ($this->decorated && $this->decorated->supportsNormalization($data, $format)) {
             return true;
@@ -45,7 +45,7 @@ class FiniteContextNormalizer implements NormalizerInterface, DenormalizerInterf
         }
     }
 
-    public function normalize($object, $format = null, array $context = []): array
+    public function normalize($object, ?string $format = null, array $context = []): array
     {
         $data = $this->decorated ? $this->decorated->normalize($object, $format, $context) : [];
 
@@ -82,12 +82,12 @@ class FiniteContextNormalizer implements NormalizerInterface, DenormalizerInterf
         }
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization($data, string $type, ?string $format = null): bool
     {
         return $this->decorated && $this->decorated->supportsDenormalization($data, $type, $format);
     }
 
-    public function denormalize($data, string $class, string $format = null, array $context = [])
+    public function denormalize($data, string $class, ?string $format = null, array $context = [])
     {
         return $this->decorated->denormalize($data, $class, $format, $context);
     }

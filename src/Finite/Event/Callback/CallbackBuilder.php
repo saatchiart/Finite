@@ -43,7 +43,7 @@ class CallbackBuilder
      * @param array                 $on
      * @param callable              $callable
      */
-    public function __construct(StateMachineInterface $sm, array $from = array(), array $to = array(), array $on = array(), $callable = null)
+    public function __construct(StateMachineInterface $sm, array $from = array(), array $to = array(), array $on = array(), ?callable $callable = null)
     {
         $this->stateMachine = $sm;
         $this->from = $from;
@@ -156,7 +156,7 @@ class CallbackBuilder
      *
      * @return CallbackBuilder
      */
-    public static function create(StateMachineInterface $sm, array $from = array(), array $to = array(), array $on = array(), $callable = null)
+    public static function create(StateMachineInterface $sm, array $from = array(), array $to = array(), array $on = array(), ?callable $callable = null)
     {
         return new self($sm, $from, $to, $on, $callable);
     }
